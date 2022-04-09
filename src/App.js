@@ -1,25 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { CountrysContext } from './data/CountrysContext'
+import { useFetchCountrys } from './hooks/useFetchCountrys';
+import { DashboardRoutes } from './routes/DashboardRoutes'
 
-function App() {
+export const App = () => {
+
+  const state = useFetchCountrys();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <CountrysContext.Provider value={state}>
+        <DashboardRoutes/>
+      </CountrysContext.Provider>
+    </>
+  )
 }
-
-export default App;
