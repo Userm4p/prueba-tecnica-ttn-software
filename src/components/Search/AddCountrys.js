@@ -29,7 +29,7 @@ export const AddCountrys = ( {setCountrys} ) => {
                 aria-describedby="button-addon1"
                 />
             <div className="input-group-prepend">
-                <button onClick={handleSubmit} className="btn btn-outline-secondary" type="button" id="button-addon1">Button</button>
+                <button onClick={handleSubmit} className="btn btn-outline-secondary" type="button" id="button-addon1">Search</button>
             </div>
         </form>
     )

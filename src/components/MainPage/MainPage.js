@@ -1,8 +1,8 @@
-import React, { useContext, useState } from 'react'
+import React from 'react'
 import { PageContext } from '../../data/CountrysContext';
 import { useCounter } from '../../hooks/useCounter';
 import { CountryList } from '../Countrys/CountryList';
-import { SearchScreen } from '../Search/SearchScreen';
+
 
 export const MainPage = () => { 
 
@@ -23,7 +23,7 @@ export const MainPage = () => {
       </PageContext.Provider>
       
       <footer className="text-center d-flex align-items-baseline  justify-content-center">
-            <button className="btn" onClick={reset} >Firs page</button>
+            <button className="btn" onClick={reset} >First page</button>
             {(state>0) ?<button className="btn" onClick={() => decrement(1)} >Previus</button> : <div className="btn text-danger">
               Previus
             </div>}
@@ -43,12 +43,20 @@ export const MainPage = () => {
             <div className="btn text-primary">
               {state+1}
             </div>
-            
-            <button className="btn" onClick={() => increment(1)}  >{state+2}</button>
-            <button className="btn" onClick={() => increment(2)}  >{state+3}</button>
-            <button className="btn" onClick={() => increment(3)}  >{state+4}</button>
-            <button className="btn" onClick={() => increment(1)}  >Next</button>
-            
+            {
+              (state<12) ? 
+              <div>
+                
+                <button className="btn" onClick={() => increment(1)}  >{state+2}</button>
+                <button className="btn" onClick={() => increment(2)}  >{state+3}</button>
+                <button className="btn" onClick={() => increment(1)}  >Next</button>
+              </div> : (state===12) ?  
+                <div>
+                  <button className="btn" onClick={() => increment(1)}  >{state+2}</button>  
+                  <button className="btn" onClick={() => increment(1)}  >Next</button>
+                </div>
+              :  null
+            }
       </footer>
     </>
   )

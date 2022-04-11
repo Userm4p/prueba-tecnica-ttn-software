@@ -20,6 +20,11 @@ export const useFetchCountryByName = (name) => {
                     });
                 
                 
+            }).catch(err => {
+                setState({
+                    data: '',
+                    loading: false
+                });
             })
     }, [name])
     return state
